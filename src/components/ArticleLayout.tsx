@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Head from "next/head";
+import { useRouter } from "next/router";
 
-import { Container } from '@/components/Container'
-import { Prose } from '@/components/Prose'
-import { formatDate } from '@/lib/formatDate'
+import { Container } from "~/components/Container";
+import { Prose } from "~/components/Prose";
+import { formatDate } from "~/lib/formatDate";
 
 function ArrowLeftIcon(props) {
   return (
@@ -15,19 +15,14 @@ function ArrowLeftIcon(props) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
-export function ArticleLayout({
-  children,
-  meta,
-  isRssFeed = false,
-  previousPathname,
-}) {
-  let router = useRouter()
+export function ArticleLayout({ children, meta, isRssFeed = false, previousPathname }) {
+  let router = useRouter();
 
   if (isRssFeed) {
-    return children
+    return children;
   }
 
   return (
@@ -68,5 +63,5 @@ export function ArticleLayout({
         </div>
       </Container>
     </>
-  )
+  );
 }

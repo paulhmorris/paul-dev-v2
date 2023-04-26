@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import { Card } from "~/components/Card";
-import { Section } from "~/components/Section";
+import { Card } from "~/components/common/Card";
+import { Section } from "~/components/common/Section";
 import { SimpleLayout } from "~/components/SimpleLayout";
 
 function ToolsSection({ children, ...props }) {
@@ -14,7 +14,12 @@ function ToolsSection({ children, ...props }) {
   );
 }
 
-function Tool({ title, href, children }) {
+type ToolProps = {
+  title: string;
+  href?: string;
+  children: React.ReactNode;
+};
+function Tool({ title, href, children }: ToolProps) {
   return (
     <Card as="li">
       <Card.Title as="h3" href={href}>
@@ -29,7 +34,7 @@ export default function Uses() {
   return (
     <>
       <Head>
-        <title>Uses - Spencer Sharp</title>
+        <title>Uses - Paul Morris</title>
         <meta name="description" content="Software I use, gadgets I love, and other things I recommend." />
       </Head>
       <SimpleLayout

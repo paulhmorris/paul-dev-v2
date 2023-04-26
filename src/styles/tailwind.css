@@ -2,3 +2,9 @@
 @import "tailwindcss/components";
 @import "./prism.css";
 @import "tailwindcss/utilities";
+
+@layer components {
+  * {
+    @apply outline-offset-4 outline-teal-700 focus:outline-2 focus-visible:outline-dashed;
+  }
+}

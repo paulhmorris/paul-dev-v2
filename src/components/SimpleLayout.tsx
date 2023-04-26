@@ -1,6 +1,11 @@
-import { Container } from "~/components/Container";
+import { Container } from "~/components/common/Container";
 
-export function SimpleLayout({ title, intro, children }) {
+type Props = {
+  title: string;
+  intro: string;
+  children?: React.ReactNode;
+};
+export function SimpleLayout({ title, intro, children }: Props) {
   return (
     <Container className="mt-16 sm:mt-32">
       <header className="max-w-2xl">

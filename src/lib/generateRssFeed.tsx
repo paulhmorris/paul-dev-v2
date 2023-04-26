@@ -3,13 +3,13 @@ import { mkdir, writeFile } from "fs/promises";
 import { withRouter } from "next/router";
 import ReactDOMServer from "react-dom/server";
 
-import { getAllArticles } from "./getAllArticles";
+import { getAllWritings } from "./getAllWritings";
 
 export async function generateRssFeed() {
-  let articles = await getAllArticles();
+  let writings = await getAllWritings();
   let siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   let author = {
-    name: "Spencer Sharp",
+    name: "Paul Morris",
     email: "spencer@planetaria.tech",
   };
 
@@ -28,19 +28,20 @@ export async function generateRssFeed() {
     },
   });
 
-  for (let article of articles) {
-    let url = `${siteUrl}/articles/${article.slug}`;
-    let html = ReactDOMServer.renderToStaticMarkup(withRouter(<article.component isRssFeed />));
+  for (let writing of writings) {
+    let url = `${siteUrl}/writings/${writing.slug}`;
+    // @ts-ignore
+    let html = ReactDOMServer.renderToStaticMarkup(withRouter(<writing.component isRssFeed />));
 
     feed.addItem({
-      title: article.title,
+      title: writing.title,
       id: url,
       link: url,
-      description: article.description,
+      description: writing.description,
       content: html,
       author: [author],
       contributor: [author],
-      date: new Date(article.date),
+      date: new Date(writing.date),
     });
   }
 
